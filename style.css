@@ -1,10 +1,10 @@
 :root {
-    /* NOUVELLE PALETTE DE COULEURS (Inspirée de l'image) */
+    /* NOUVELLE PALETTE DE COULEURS */
     --bg-overlay: rgba(16, 24, 35, 0.85); /* Bleu très foncé, semi-transparent */
     --bg-panel: rgba(25, 35, 50, 0.6); /* Panneaux en verre teinté */
     
     --accent-gold: #FFB800; /* Jaune Or vif */
-    --accent-blue: #00BFFF; /* Bleu Cyan vif (pour les CT/Flash) */
+    --accent-blue: #00BFFF; /* Bleu Cyan vif */
     
     --text-main: #ffffff;
     --text-dim: #a0aec0;
@@ -17,7 +17,7 @@ body {
     background-image: url('assets/bg_main.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* L'image reste fixe quand on scrolle */
+    background-attachment: fixed;
     
     color: var(--text-main);
     font-family: var(--font-main);
@@ -32,9 +32,8 @@ body {
     height: 100vh;
     position: relative;
     overflow-y: auto;
-    /* Ajout d'un voile bleu foncé par-dessus l'image pour la lisibilité */
     background: var(--bg-overlay);
-    backdrop-filter: blur(5px); /* Petit effet de flou sur le fond */
+    backdrop-filter: blur(5px);
 }
 
 .menu-content {
@@ -43,63 +42,54 @@ body {
 }
 
 .menu-header h1 {
-    font-size: 70px; /* Plus gros */
-    font-weight: 800; margin: 0; letter-spacing: 4px;
-    text-transform: uppercase;
-    /* Ombre portée "Néon" */
-    text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
+    font-size: 70px; font-weight: 800; margin: 0; letter-spacing: 4px;
+    text-transform: uppercase; text-shadow: 0 0 30px rgba(255, 184, 0, 0.5);
 }
 
 .menu-header .accent { color: var(--accent-gold); }
 
 .subtitle {
-    color: var(--accent-blue); /* Sous-titre en bleu */
-    font-size: 20px; letter-spacing: 8px; margin-top: 10px;
+    color: var(--accent-blue); font-size: 20px; letter-spacing: 8px; margin-top: 10px;
     margin-bottom: 80px; font-weight: 700; text-transform: uppercase;
 }
 
-/* GRILLE DES CARTES (EFFET VERRE) */
+/* GRILLE DES CARTES */
 .maps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 0 20px; }
 
 .map-card {
-    height: 400px;
-    background-color: var(--bg-panel); /* Fond semi-transparent */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
-    border-radius: 8px; cursor: pointer; position: relative;
-    overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: 400px; background-color: var(--bg-panel);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px;
+    cursor: pointer; position: relative; overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .map-card:hover {
     transform: translateY(-10px);
-    border-color: var(--accent-gold); /* Bordure dorée au survol */
-    /* Double ombre portée dorée et bleue */
+    border-color: var(--accent-gold);
     box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(255, 184, 0, 0.3), inset 0 0 10px rgba(0, 191, 255, 0.2);
 }
 
 .card-img {
     width: 100%; height: 100%; background-size: cover; background-position: center;
     transition: transform 0.5s ease, filter 0.5s ease;
-    filter: brightness(0.8) sepia(0.2) hue-rotate(180deg); /* Effet bleuté sur les images */
+    filter: brightness(0.8) sepia(0.2) hue-rotate(180deg);
 }
-.map-card:hover .card-img { transform: scale(1.1); filter: brightness(1) sepia(0); /* Retour à la normale au survol */ }
+.map-card:hover .card-img { transform: scale(1.1); filter: brightness(1) sepia(0); }
 
 .card-info {
     position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px;
-    /* Dégradé plus marqué */
     background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
     text-align: left;
 }
 .map-name { font-size: 36px; font-weight: 800; color: white; text-transform: uppercase; letter-spacing: 2px; }
 
-/* --- VUE CARTE (TOOLBAR TRANSPARENTE) --- */
+/* --- VUE CARTE --- */
 .toolbar {
     height: 90px; display: flex; align-items: center; justify-content: space-between;
-    padding: 0 40px;
-    background: rgba(16, 24, 35, 0.9); /* Fond très transparent */
+    padding: 0 40px; background: rgba(16, 24, 35, 0.9);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px); /* Flou important */
-    z-index: 10; position: relative;
+    backdrop-filter: blur(20px); z-index: 10; position: relative;
 }
 
 .left-tools { display: flex; align-items: center; gap: 20px; }
@@ -126,11 +116,10 @@ body {
     letter-spacing: 3px; text-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
 }
 
-/* SWITCH MODERNISÉ */
+/* SWITCH */
 .switch-container {
     background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 50px; /* Arrondi */
-    padding: 5px; display: flex; gap: 0;
+    border-radius: 50px; padding: 5px; display: flex; gap: 0;
 }
 
 .switch-container button {
@@ -140,24 +129,16 @@ body {
 }
 .switch-container button:hover { color: white; }
 
-#btn-t.active {
-    background: var(--accent-gold); color: black;
-    box-shadow: 0 0 20px rgba(255, 184, 0, 0.4);
-}
-#btn-ct.active {
-    background: var(--accent-blue); color: white;
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
-}
+#btn-t.active { background: var(--accent-gold); color: black; box-shadow: 0 0 20px rgba(255, 184, 0, 0.4); }
+#btn-ct.active { background: var(--accent-blue); color: white; box-shadow: 0 0 20px rgba(0, 191, 255, 0.4); }
 
-/* VIEWPORT (Fond plus sombre pour le contraste du radar) */
+/* VIEWPORT */
 .map-viewport {
     width: 100%; height: calc(100vh - 90px);
-    background-color: rgba(10, 15, 25, 0.95); /* Presque opaque */
-    position: relative; overflow: hidden;
-    border-top: 3px solid var(--accent-blue); /* Ligne de séparation bleue */
+    background-color: rgba(10, 15, 25, 0.95); position: relative; overflow: hidden;
+    border-top: 3px solid var(--accent-blue);
 }
 
-/* Grille plus subtile */
 .grid-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
@@ -173,15 +154,27 @@ body {
 }
 .key { color: var(--accent-gold); font-weight: 800; }
 
-/* --- ÉLÉMENTS DE LA CARTE --- */
+/* CARTE */
 #zoom-container { transform-origin: center center; transition: transform 0.1s ease-out; cursor: grab; }
 #zoom-container:active { cursor: grabbing; }
 #map-wrapper { position: relative; width: 800px; height: 550px; }
-#radar-img { width: 100%; height: 100%; object-fit: contain; opacity: 0.9; } /* Radar légèrement transparent */
+#radar-img { width: 100%; height: 100%; object-fit: contain; opacity: 0.9; }
 
 #lines-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-line { stroke: var(--accent-gold); stroke-width: 3; stroke-dasharray: 8,6; animation: dash 60s linear infinite; opacity: 0.8; filter: drop-shadow(0 0 5px var(--accent-gold)); }
-@keyframes dash { to { stroke-dashoffset: 1000; } }
+
+/* CORRECTION ICI : L'animation dash va maintenant vers une valeur NÉGATIVE pour avancer */
+line { 
+    stroke: var(--accent-gold); 
+    stroke-width: 3; 
+    stroke-dasharray: 8,6; 
+    animation: dash 60s linear infinite; 
+    opacity: 0.8; 
+    filter: drop-shadow(0 0 5px var(--accent-gold)); 
+}
+
+@keyframes dash { 
+    to { stroke-dashoffset: -1000; } /* LE MOINS FAIT TOUTE LA DIFFÉRENCE */
+}
 
 #points-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
 
@@ -207,7 +200,7 @@ line { stroke: var(--accent-gold); stroke-width: 3; stroke-dasharray: 8,6; anima
 .point.launcher { width: 24px; height: 24px; background-color: white; border: 3px solid var(--bg-dark); animation: none; box-shadow: 0 0 10px white; }
 .point.launcher:hover { background-color: var(--accent-gold); border-color: white; box-shadow: 0 0 20px var(--accent-gold); }
 
-/* --- POPUP (NEW GLASSMORPHISM) --- */
+/* POPUP */
 .modal {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     z-index: 200; display: flex; justify-content: center; align-items: center;
@@ -215,20 +208,13 @@ line { stroke: var(--accent-gold); stroke-width: 3; stroke-dasharray: 8,6; anima
 }
 .modal.visible { opacity: 1; pointer-events: auto; }
 
-.modal-backdrop {
-    position: absolute; width: 100%; height: 100%;
-    background: rgba(10, 15, 25, 0.8); /* Fond bleu nuit */
-    backdrop-filter: blur(8px);
-}
+.modal-backdrop { position: absolute; width: 100%; height: 100%; background: rgba(10, 15, 25, 0.8); backdrop-filter: blur(8px); }
 
 .glass-panel {
     position: relative;
-    /* Verre bleuté */
     background: linear-gradient(135deg, rgba(25, 35, 50, 0.8), rgba(16, 24, 35, 0.9));
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-top-color: rgba(0, 191, 255, 0.3); /* Reflet bleu en haut */
-    border-radius: 16px; padding: 50px;
-    width: 90%; max-width: 1200px;
+    border: 1px solid rgba(255, 255, 255, 0.1); border-top-color: rgba(0, 191, 255, 0.3);
+    border-radius: 16px; padding: 50px; width: 90%; max-width: 1200px;
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(0, 191, 255, 0.05);
     transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -242,22 +228,15 @@ line { stroke: var(--accent-gold); stroke-width: 3; stroke-dasharray: 8,6; anima
 .close-btn:hover { color: white; background: var(--accent-red); }
 
 .modal-header {
-    text-align: center; margin-bottom: 40px;
-    border-bottom: 2px solid rgba(255, 184, 0, 0.2);
+    text-align: center; margin-bottom: 40px; border-bottom: 2px solid rgba(255, 184, 0, 0.2);
     padding-bottom: 30px; position: relative;
 }
-/* Petite barre néon sous le titre */
 .modal-header::after {
     content: ''; position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%);
-    width: 100px; height: 2px; background: var(--accent-gold);
-    box-shadow: 0 0 10px var(--accent-gold);
+    width: 100px; height: 2px; background: var(--accent-gold); box-shadow: 0 0 10px var(--accent-gold);
 }
 
-#modal-title {
-    font-size: 50px; font-weight: 800; color: white; margin: 0;
-    text-transform: uppercase; letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(255, 184, 0, 0.3);
-}
+#modal-title { font-size: 50px; font-weight: 800; color: white; margin: 0; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 20px rgba(255, 184, 0, 0.3); }
 
 .tag-container { margin-top: 15px; }
 .tag {
@@ -284,18 +263,14 @@ line { stroke: var(--accent-gold); stroke-width: 3; stroke-dasharray: 8,6; anima
     box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: 0.3s;
 }
 .img-frame:hover { border-color: var(--accent-blue); box-shadow: 0 15px 40px rgba(0, 191, 255, 0.2); }
+.img-frame img { max-width: 100%; max-height: 600px; object-fit: contain; display: block; }
 
-.img-frame img {
-    max-width: 100%; max-height: 600px; object-fit: contain; display: block;
-}
-
-/* Coins technologiques bleus */
 .corner-decor {
     position: absolute; bottom: 0; right: 0; width: 30px; height: 30px;
     border-bottom: 3px solid var(--accent-blue); border-right: 3px solid var(--accent-blue);
     box-shadow: 2px 2px 10px rgba(0, 191, 255, 0.5);
 }
-.img-frame::before { /* Coin haut gauche */
+.img-frame::before {
     content: ''; position: absolute; top: 0; left: 0; width: 30px; height: 30px;
     border-top: 3px solid var(--accent-blue); border-left: 3px solid var(--accent-blue);
     box-shadow: -2px -2px 10px rgba(0, 191, 255, 0.5); z-index: 2;
