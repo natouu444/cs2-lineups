@@ -1,0 +1,160 @@
+{
+    "Mirage": [
+        {
+            "id": 1763711013,
+            "x": 318,
+            "y": 237,
+            "name": "WINDOW",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 693,
+                    "y": 138,
+                    "name": "T-SPAWN #5",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763711059_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763711059_aim.jpg"
+                },
+                {
+                    "x": 682,
+                    "y": 149,
+                    "name": "T-SPAWN #4",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763711383_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763711383_aim.jpg"
+                },
+                {
+                    "x": 681,
+                    "y": 162,
+                    "name": "T-SPAWN #3",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763711427_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763711427_aim.jpg"
+                },
+                {
+                    "x": 680,
+                    "y": 177,
+                    "name": "T-SPAWN #2",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763711489_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763711489_aim.jpg"
+                },
+                {
+                    "x": 690,
+                    "y": 192,
+                    "name": "T-SPAWN #1",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763711544_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763711544_aim.jpg"
+                },
+                {
+                    "x": 575,
+                    "y": 242,
+                    "name": "TOP MID",
+                    "throw_type": "Run Throw",
+                    "img_pos": "assets/mirage/mirage_1763711674_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763711674_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763711816,
+            "x": 425,
+            "y": 383,
+            "name": "STAIRS",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 671,
+                    "y": 322,
+                    "name": "MAIN #1",
+                    "throw_type": "Left Click",
+                    "img_pos": "assets/mirage/mirage_1763711911_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763711911_aim.jpg"
+                },
+                {
+                    "x": 714,
+                    "y": 136,
+                    "name": "T-SPAWN TRASH",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763712018_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763712018_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763712054,
+            "x": 393,
+            "y": 381,
+            "name": "JUNGLE",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 714,
+                    "y": 136,
+                    "name": "T-SPAWN TRASH",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763712100_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763712100_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763712172,
+            "x": 319,
+            "y": 109,
+            "name": "SHORT",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 473,
+                    "y": 4,
+                    "name": "B MAIN",
+                    "throw_type": "Left Click",
+                    "img_pos": "assets/mirage/mirage_1763712221_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763712221_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763712261,
+            "x": 201,
+            "y": 182,
+            "name": "KITCHEN WINDOW",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 473,
+                    "y": 3,
+                    "name": "B MAIN",
+                    "throw_type": "Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763712277_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763712277_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763712287,
+            "x": 138,
+            "y": 181,
+            "name": "DOOR",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 473,
+                    "y": 4,
+                    "name": "B MAIN",
+                    "throw_type": "Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763712325_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763712325_aim.jpg"
+                }
+            ]
+        }
+    ]
+}

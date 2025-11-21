@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS2 Tactical Maps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app">
+        <!-- MENU PRINCIPAL -->
+        <div id="menu-view">
+            <div class="menu-header">
+                <h1>SELECT MAP</h1>
+            </div>
+            <div class="maps-grid" id="maps-container">
+                <!-- Les cartes sont générées ici par le JS -->
+            </div>
+        </div>
+
+        <!-- VUE CARTE -->
+        <div id="map-view" class="hidden">
+            <div class="toolbar">
+                <button onclick="goHome()" class="btn-tool">← MENU</button>
+                
+                <!-- Bouton Retour Zone (Caché par défaut) -->
+                <button id="btn-back-zone" onclick="exitZone()" class="btn-tool hidden" style="border-color: #d35400; color: #d35400;">← RETOUR VUE GLOBALE</button>
+                
+                <h2 id="current-map-title">MIRAGE</h2>
+                
+                <div class="spacer"></div>
+
+                <!-- Switch T / CT -->
+                <div class="switch-container" id="switch-cont">
+                    <button id="btn-t" onclick="setSide('T')" class="active">T</button>
+                    <span class="sep">|</span>
+                    <button id="btn-ct" onclick="setSide('CT')">CT</button>
+                </div>
+            </div>
+
+            <div class="map-viewport">
+                <p class="zoom-hint">Molette pour zoomer • Clic gauche pour déplacer</p>
+                
+                <!-- Conteneur qui va être zoomé/déplacé -->
+                <div id="zoom-container">
+                    <div id="map-wrapper">
+                        <img id="radar-img" src="" alt="Map Radar">
+                        <!-- CALQUE DESSIN (TRAITS) -->
+                        <svg id="lines-layer"></svg>
+                        <!-- CALQUE BOUTONS -->
+                        <div id="points-layer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP DETAILS -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <h2 id="modal-title">TITRE</h2>
+                <h3 id="modal-type">TYPE</h3>
+            </div>
+            
+            <div class="photos-container">
+                <div class="photo-box">
+                    <p>POSITION (PIEDS)</p>
+                    <div class="img-frame">
+                        <img id="img-pos" src="" alt="Position">
+                    </div>
+                </div>
+                <div class="photo-box">
+                    <p>VISEUR (CROSSHAIR)</p>
+                    <div class="img-frame">
+                        <img id="img-aim" src="" alt="Viseur">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
