@@ -155,6 +155,158 @@
                     "img_aim": "assets/mirage/mirage_1763712325_aim.jpg"
                 }
             ]
+        },
+        {
+            "id": 1763727839,
+            "x": 210,
+            "y": 97,
+            "name": "SHORT",
+            "type": "flash",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 267,
+                    "y": 28,
+                    "name": "B MAIN",
+                    "throw_type": "Run Throw",
+                    "img_pos": "assets/mirage/mirage_1763727861_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763727862_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763728071,
+            "x": 436,
+            "y": 219,
+            "name": "MID",
+            "type": "flash",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 600,
+                    "y": 36,
+                    "name": "STAIRS MAIN B",
+                    "throw_type": "W + Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763728108_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763728108_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763728170,
+            "x": 523,
+            "y": 360,
+            "name": "STAIRS A",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 626,
+                    "y": 300,
+                    "name": "DOOR MAIN A",
+                    "throw_type": "Left Click",
+                    "img_pos": "assets/mirage/mirage_1763728189_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763728189_aim.jpg"
+                },
+                {
+                    "x": 663,
+                    "y": 299,
+                    "name": "CORNER MAIN A",
+                    "throw_type": "Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763728241_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763728241_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763728316,
+            "x": 507,
+            "y": 453,
+            "name": "UNDER PALACE",
+            "type": "molotov",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 508,
+                    "y": 382,
+                    "name": "PIT EXIT",
+                    "throw_type": "Run Throw",
+                    "img_pos": "assets/mirage/mirage_1763728365_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763728365_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763728464,
+            "x": 444,
+            "y": 480,
+            "name": "DEFAULT A",
+            "type": "molotov",
+            "side": "CT",
+            "lineups": [
+                {
+                    "x": 261,
+                    "y": 511,
+                    "name": "CT",
+                    "throw_type": "Left Click",
+                    "img_pos": "assets/mirage/mirage_1763728492_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763728492_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763728585,
+            "x": 104,
+            "y": 94,
+            "name": "BENCH",
+            "type": "molotov",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 288,
+                    "y": 16,
+                    "name": "MAIN B",
+                    "throw_type": "Run Throw",
+                    "img_pos": "assets/mirage/mirage_1763728618_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763728618_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763728930,
+            "x": 358,
+            "y": 504,
+            "name": "CT",
+            "type": "smoke",
+            "side": "T",
+            "lineups": [
+                {
+                    "x": 635,
+                    "y": 300,
+                    "name": "DOOR A MAIN",
+                    "throw_type": "Jump Throw",
+                    "img_pos": "assets/mirage/mirage_1763728951_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763728951_aim.jpg"
+                }
+            ]
+        },
+        {
+            "id": 1763729121,
+            "x": 277,
+            "y": 30,
+            "name": "B MAIN",
+            "type": "smoke",
+            "side": "CT",
+            "lineups": [
+                {
+                    "x": 122,
+                    "y": 157,
+                    "name": "TRASH",
+                    "throw_type": "Left Click",
+                    "img_pos": "assets/mirage/mirage_1763729150_pos.jpg",
+                    "img_aim": "assets/mirage/mirage_1763729150_aim.jpg"
+                }
+            ]
         }
     ]
 }
