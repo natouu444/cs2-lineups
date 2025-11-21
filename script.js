@@ -8,13 +8,11 @@ let scale = 1;
 let panning = false;
 let pointX = 0, pointY = 0, startX = 0, startY = 0;
 
-// 1. CHARGEMENT
 fetch('data.json')
     .then(r => r.json())
     .then(d => { allData = d; initMenu(); })
-    .catch(e => console.error("Erreur JSON (Lance python -m http.server !):", e));
+    .catch(e => console.error("Erreur JSON:", e));
 
-// 2. MENU
 function initMenu() {
     const c = document.getElementById('maps-container');
     const maps = ["Mirage", "Nuke", "Inferno", "Dust II", "Ancient", "Train", "Overpass"];
@@ -33,7 +31,6 @@ function initMenu() {
     });
 }
 
-// 3. VUE CARTE
 function openMap(name) {
     currentMap = name;
     activeZone = null;
@@ -45,7 +42,7 @@ function openMap(name) {
     if(clean.includes("dust")) clean = "dust2";
     document.getElementById('radar-img').src = `assets/${clean}_map.png`;
     
-    resetZoom(); // Remet le zoom à 1
+    resetZoom();
     updateUI();
     renderPoints();
 }
@@ -57,7 +54,7 @@ function goHome() {
 
 function setSide(s) {
     currentSide = s;
-    activeZone = null; // Reset zone si on change de side
+    activeZone = null;
     updateUI();
     renderPoints();
 }
@@ -65,10 +62,8 @@ function setSide(s) {
 function updateUI() {
     document.getElementById('btn-t').classList.toggle('active', currentSide === 'T');
     document.getElementById('btn-ct').classList.toggle('active', currentSide === 'CT');
-    
     const backZoneBtn = document.getElementById('btn-back-zone');
     const switchCont = document.getElementById('switch-cont');
-    
     if(activeZone) {
         backZoneBtn.classList.remove('hidden');
         switchCont.classList.add('hidden');
@@ -78,7 +73,6 @@ function updateUI() {
     }
 }
 
-// 4. RENDU DES POINTS ET TRAITS
 function renderPoints() {
     const pLayer = document.getElementById('points-layer');
     const sLayer = document.getElementById('lines-layer');
@@ -86,45 +80,42 @@ function renderPoints() {
 
     if(!allData[currentMap]) return;
 
-    // A. VUE GLOBALE
     if(!activeZone) {
         allData[currentMap].forEach(z => {
-            // Check Side (si dispo dans le JSON, sinon par defaut T)
             let side = z.side || "T";
             if(side === currentSide) {
                 let col = getColor(z.type);
                 createBtn(z.x, z.y, 30, col, z.lineups.length, () => enterZone(z), pLayer);
             }
         });
-    } 
-    // B. VUE ZONE
-    else {
-        // Point Fantôme
-        createBtn(activeZone.x, activeZone.y, 32, "rgba(255,255,255,0.2)", "X", null, pLayer, true);
+    } else {
+        // Point Fantôme (Zone)
+        createBtn(activeZone.x, activeZone.y, 32, null, "X", null, pLayer, "phantom");
         
         activeZone.lineups.forEach(l => {
             // Point Lancer
-            createBtn(l.x, l.y, 20, "white", "", () => openPopup(activeZone, l), pLayer);
+            createBtn(l.x, l.y, 20, "white", "", () => openPopup(activeZone, l), pLayer, "launcher");
             // Trait
             drawLine(l.x, l.y, activeZone.x, activeZone.y, sLayer);
         });
     }
 }
 
-function createBtn(x, y, size, bg, txt, onClick, container, isPhantom=false) {
+function createBtn(x, y, size, bg, txt, onClick, container, specialClass="") {
     let b = document.createElement('div');
     b.className = 'point';
+    if(specialClass) b.classList.add(specialClass);
+    
     b.style.left = x + 'px'; b.style.top = y + 'px';
-    b.style.width = size + 'px'; b.style.height = size + 'px';
-    b.style.backgroundColor = bg;
-    b.innerText = txt;
-    if(isPhantom) {
-        b.style.border = "2px dashed #aaa";
-        b.style.cursor = "default";
-        b.style.color = "white";
-    } else {
-        b.onclick = (e) => { e.stopPropagation(); onClick(); }; 
+    
+    if(!specialClass) {
+        b.style.width = size + 'px'; b.style.height = size + 'px';
+        b.style.backgroundColor = bg;
+        b.style.borderColor = bg; // Pour le pulse
     }
+    
+    b.innerText = txt;
+    if(onClick) b.onclick = (e) => { e.stopPropagation(); onClick(); };
     container.appendChild(b);
 }
 
@@ -136,13 +127,12 @@ function drawLine(x1, y1, x2, y2, container) {
 }
 
 function getColor(t) {
-    if(t==="molotov") return "#FF4500";
-    if(t==="flash") return "#00BFFF";
+    if(t==="molotov") return "#d32f2f"; // Rouge foncé
+    if(t==="flash") return "#3b97d3";   // Bleu CS2
     if(t==="grenade") return "#4CAF50";
-    return "#FFD700";
+    return "#de9b35"; // Or CS2
 }
 
-// 5. NAVIGATION
 function enterZone(z) { activeZone = z; updateUI(); renderPoints(); }
 function exitZone() { activeZone = null; updateUI(); renderPoints(); }
 
@@ -151,48 +141,44 @@ function openPopup(z, l) {
     document.getElementById('modal-type').innerText = l.throw_type;
     document.getElementById('img-pos').src = l.img_pos || "";
     document.getElementById('img-aim').src = l.img_aim || "";
-    document.getElementById('modal').classList.remove('hidden');
+    
+    // Animation d'ouverture (Fade In)
+    const m = document.getElementById('modal');
+    m.classList.remove('hidden');
+    // Petit délai pour que la transition CSS marche
+    setTimeout(() => m.classList.add('visible'), 10);
 }
-function closeModal() { document.getElementById('modal').classList.add('hidden'); }
-window.onclick = (e) => { if(e.target == document.getElementById('modal')) closeModal(); }
 
-// 6. SYSTEME DE ZOOM & DRAG (WEB)
+function closeModal() { 
+    const m = document.getElementById('modal');
+    m.classList.remove('visible');
+    setTimeout(() => m.classList.add('hidden'), 300); // Attendre la fin de l'anim
+}
+
+window.onclick = (e) => { if(e.target == document.querySelector('.modal-backdrop')) closeModal(); }
+
+// ZOOM & DRAG
 const zoomCont = document.getElementById('zoom-container');
 const viewport = document.querySelector('.map-viewport');
 
 function setTransform() {
     zoomCont.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
-
-function resetZoom() {
-    scale = 1; pointX = 0; pointY = 0;
-    setTransform();
-}
+function resetZoom() { scale = 1; pointX = 0; pointY = 0; setTransform(); }
 
 viewport.onwheel = function (e) {
     e.preventDefault();
-    let xs = (e.clientX - pointX) / scale;
-    let ys = (e.clientY - pointY) / scale;
+    let xs = (e.clientX - pointX) / scale, ys = (e.clientY - pointY) / scale;
     let delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-    (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
-    pointX = e.clientX - xs * scale;
-    pointY = e.clientY - ys * scale;
+    (delta > 0) ? (scale *= 1.1) : (scale /= 1.1);
+    pointX = e.clientX - xs * scale; pointY = e.clientY - ys * scale;
     setTransform();
 }
-
 zoomCont.onmousedown = function (e) {
-    e.preventDefault();
-    startX = e.clientX - pointX;
-    startY = e.clientY - pointY;
-    panning = true;
+    e.preventDefault(); startX = e.clientX - pointX; startY = e.clientY - pointY; panning = true;
 }
-
 window.onmouseup = function (e) { panning = false; }
-
 window.onmousemove = function (e) {
     if (!panning) return;
-    e.preventDefault();
-    pointX = e.clientX - startX;
-    pointY = e.clientY - startY;
-    setTransform();
+    e.preventDefault(); pointX = e.clientX - startX; pointY = e.clientY - startY; setTransform();
 }
