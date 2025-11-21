@@ -1,10 +1,11 @@
 :root {
-    /* NOUVELLE PALETTE DE COULEURS */
-    --bg-overlay: rgba(16, 24, 35, 0.85); /* Bleu très foncé, semi-transparent */
-    --bg-panel: rgba(25, 35, 50, 0.6); /* Panneaux en verre teinté */
+    /* PALETTE SCI-FI */
+    --bg-overlay: rgba(16, 24, 35, 0.85);
+    --bg-panel: rgba(25, 35, 50, 0.6);
     
-    --accent-gold: #FFB800; /* Jaune Or vif */
-    --accent-blue: #00BFFF; /* Bleu Cyan vif */
+    --accent-gold: #FFB800;
+    --accent-blue: #00BFFF;
+    --accent-red: #d32f2f;
     
     --text-main: #ffffff;
     --text-dim: #a0aec0;
@@ -13,8 +14,7 @@
 }
 
 body {
-    /* IMAGE DE FOND GLOBALE */
-    background-image: url('assets/bg_main.jpg');
+    background-image: url('assets/bg_main.jpg'); /* Ton image de fond Sci-Fi */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -37,8 +37,23 @@ body {
 }
 
 .menu-content {
-    position: relative; z-index: 2; padding: 60px 20px;
+    position: relative; z-index: 2; padding: 40px 20px;
     max-width: 1400px; margin: 0 auto; text-align: center;
+}
+
+/* --- STYLE DU LOGO --- */
+.site-logo {
+    width: 130px; /* Ajuste la taille ici si besoin */
+    height: auto;
+    margin-bottom: 15px;
+    /* Effet de lueur "Néon" autour du logo */
+    filter: drop-shadow(0 0 15px rgba(0, 191, 255, 0.4));
+    transition: transform 0.3s ease;
+}
+
+.site-logo:hover {
+    transform: scale(1.05); /* Petit zoom au survol */
+    filter: drop-shadow(0 0 20px rgba(255, 184, 0, 0.6)); /* La lueur devient dorée */
 }
 
 .menu-header h1 {
@@ -50,7 +65,7 @@ body {
 
 .subtitle {
     color: var(--accent-blue); font-size: 20px; letter-spacing: 8px; margin-top: 10px;
-    margin-bottom: 80px; font-weight: 700; text-transform: uppercase;
+    margin-bottom: 60px; font-weight: 700; text-transform: uppercase;
 }
 
 /* GRILLE DES CARTES */
@@ -162,7 +177,7 @@ body {
 
 #lines-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
 
-/* CORRECTION ICI : L'animation dash va maintenant vers une valeur NÉGATIVE pour avancer */
+/* Animation des traits en pointillés */
 line { 
     stroke: var(--accent-gold); 
     stroke-width: 3; 
@@ -171,10 +186,7 @@ line {
     opacity: 0.8; 
     filter: drop-shadow(0 0 5px var(--accent-gold)); 
 }
-
-@keyframes dash { 
-    to { stroke-dashoffset: -1000; } /* LE MOINS FAIT TOUTE LA DIFFÉRENCE */
-}
+@keyframes dash { to { stroke-dashoffset: -1000; } }
 
 #points-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
 

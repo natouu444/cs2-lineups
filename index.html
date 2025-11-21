@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-KLP4N5HW');</script>
+    <!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CS2 Tactical Maps</title>
     
+    <!-- 1. LE FAVICON (Le petit logo dans l'onglet) -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    
+    <!-- IMPORT POLICE GAMING (Rajdhani) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -17,29 +24,40 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLP4N5HW"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <div id="app">
+        <!-- 1. MENU PRINCIPAL -->
         <div id="menu-view">
             <div class="menu-bg-overlay"></div>
             <div class="menu-content">
                 <div class="menu-header">
+                    <!-- 2. LE LOGO PRINCIPAL (Juste au-dessus du titre) -->
+                    <img src="assets/logo.png" alt="CS2 Tactics Logo" class="site-logo">
+                    
                     <h1>TACTICAL MAPS <span class="accent">CS2</span></h1>
                     <p class="subtitle">SELECT YOUR BATTLEGROUND</p>
                 </div>
                 <div class="maps-grid" id="maps-container">
-                    </div>
+                    <!-- Les cartes seront générées ici par le JavaScript -->
+                </div>
             </div>
         </div>
 
+        <!-- 2. VUE CARTE -->
         <div id="map-view" class="hidden">
             <div class="toolbar">
                 <div class="left-tools">
+                    <!-- Bouton Retour Menu -->
                     <button onclick="goHome()" class="btn-tool btn-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                         <span>MENU</span>
                     </button>
                     
+                    <!-- Bouton Retour Vue Globale (Caché par défaut) -->
                     <button id="btn-back-zone" onclick="exitZone()" class="btn-tool hidden glow-orange">
                         ← VUE GLOBALE
                     </button>
@@ -49,6 +67,7 @@
                     </div>
                 </div>
 
+                <!-- Switch T / CT -->
                 <div class="switch-container" id="switch-cont">
                     <button id="btn-t" onclick="setSide('T')" class="active">TERRORIST</button>
                     <span class="sep">|</span>
@@ -56,13 +75,20 @@
                 </div>
             </div>
 
+            <!-- Zone de la Carte (Viewport) -->
             <div class="map-viewport">
-                <div class="grid-overlay"></div>
+                <div class="grid-overlay"></div> <!-- Effet de grille tactique -->
                 
+                <!-- Conteneur Zoomable -->
                 <div id="zoom-container">
                     <div id="map-wrapper">
+                        <!-- Image Radar -->
                         <img id="radar-img" src="" alt="Map Radar">
+                        
+                        <!-- Calque 1 : Traits en pointillés (SVG) -->
                         <svg id="lines-layer"></svg>
+                        
+                        <!-- Calque 2 : Boutons interactifs -->
                         <div id="points-layer"></div>
                     </div>
                 </div>
@@ -76,21 +102,25 @@
         </div>
     </div>
 
+    <!-- 3. POPUP DETAILS (Design Glassmorphism) -->
     <div id="modal" class="modal hidden">
         <div class="modal-backdrop"></div>
         <div class="modal-content glass-panel">
             <span class="close-btn" onclick="closeModal()">&times;</span>
             
             <div class="modal-header">
-                <h2 id="modal-title">TITRE</h2>
+                <h2 id="modal-title">TITRE DU POINT</h2>
                 <div class="tag-container">
-                    <span id="modal-type" class="tag">TYPE</span>
+                    <span id="modal-type" class="tag">TYPE DE LANCER</span>
                 </div>
             </div>
             
             <div class="photos-container">
+                <!-- Photo Position -->
                 <div class="photo-box">
                     <div class="photo-header">
+                        <!-- Icône SVG Position -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#de9b35" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
                         <span>POSITION (PIEDS)</span>
                     </div>
                     <div class="img-frame">
@@ -98,8 +128,12 @@
                         <div class="corner-decor"></div>
                     </div>
                 </div>
+                
+                <!-- Photo Viseur -->
                 <div class="photo-box">
                     <div class="photo-header">
+                        <!-- Icône SVG Viseur -->
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#de9b35" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
                         <span>VISEUR (CROSSHAIR)</span>
                     </div>
                     <div class="img-frame">
